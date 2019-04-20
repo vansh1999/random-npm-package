@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id = "box">
+        <div id = "animation1"> </div>
+                <div id = "animation2"> </div>
+
+        
+        </div> <br>
+        <input type = "number" id = "speed1" min="1" max="999" />
+        <input type = "number" id = "speed2" min="1" max="999" />
+   <button onclick = "return(move())" > click here</button> <br>
+
+   
+
+
+<style>
+    #box {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  background: green;
+}
+#animation1 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+
+#animation2 {
+  margin-top: 100px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color:blue;
+}
+
+
+button{
+    
+    width: 150px;
+    height: 50px;
+    align : center;
+}
+    </style>
+
+
+
+<script>
+
+function move(){
+
+var pos1 = 0;
+var pos2 = 0;
+
+var ele1 = document.getElementById("animation1");
+var ele2 = document.getElementById("animation2");
+
+var getMove = setInterval(frame , 5)
+
+function frame(){
+
+    var speed1 = document.getElementById("speed1").value 
+    var speed2 = document.getElementById("speed2").value 
+    
+    
+    if(speed1 >= 1000 || speed2 >= 1000){
+        alert("speed should < 1000");
+        return false;
+
+    }
+    else{
+
+    if(pos1 >= 350 || pos2 >= 350){
+        clearInterval(getMove)
+    }
+    else{
+
+        pos1 += speed1/100;
+        pos2 += speed2/100;
+        ele1.style.left = pos1 + "px";
+        ele2.style.left = pos2 + "px";
+        
+
+    }
+    
+}
+return true; 
+}
+}
+
+ </script>
+
+
+</body>
+</html>
+
+<!-- bugs to solve -->
+<!-- 1. if speed is > 1000 -->
+<!-- 2. object start moving without click while entering numbers is once button is clicked -->
